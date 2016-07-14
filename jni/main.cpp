@@ -5,9 +5,10 @@
 #define LOG_TAG "CustomBlock"
 #define LOGI(...) ((void)__android_log_print(ANDROID_LOG_INFO, LOG_TAG, __VA_ARGS__))
 
+#include "minecraftpe/client/renderer/block/BlockGraphics.h"
 #include "minecraftpe/world/item/BlockItem.h"
-#include "customblock/CustomB.h"
-#include "customblock/renderer/CustomBRenderer.h"
+
+#include "customblock/CustomBlock.h"
 
 Block* Block::mCustomBlock;
 
@@ -15,7 +16,7 @@ static void (*_Block$initBlocks)();
 static void Block$initBlocks() {
 	_Block$initBlocks();
 	
-	Block::mBlocks[252] = Block::mCustomBlock = (new CustomB(252))->init();
+	Block::mBlocks[252] = Block::mCustomBlock = (new CustomBlock(252))->init();
 }
 
 static void (*_Item$initItems)();
@@ -36,7 +37,7 @@ static void (*_BlockGraphics$initBlocks)();
 static void BlockGraphics$initBlocks() {
 	_BlockGraphics$initBlocks();
 	
-	BlockGraphics::mBlocks[252] = new CustomBRenderer();
+	BlockGraphics::mBlocks[252] = new BlockGraphics("dirt");
 }
 
 JNIEXPORT jint JNI_OnLoad(JavaVM *vm, void *reserved) {

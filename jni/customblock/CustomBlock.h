@@ -2,8 +2,8 @@
 
 #include "minecraftpe/world/level/block/Block.h"
 
-class CustomB : public Block {
+class CustomBlock : public Block {
 public:
-	CustomB(int blockId);
+	CustomBlock(int blockId);
 };
 
